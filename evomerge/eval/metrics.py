@@ -10,7 +10,39 @@ import string
 import unicodedata
 from typing import Dict, List, Tuple, Optional, Union, Any
 import numpy as np
-from Levenshtein import distance as levenshtein_distance
+
+def levenshtein_distance(s1, s2):
+    """
+    Calculate the Levenshtein distance between two strings.
+    
+    This is a simple implementation that doesn't require the Levenshtein package.
+    
+    Args:
+        s1: First string
+        s2: Second string
+        
+    Returns:
+        The Levenshtein distance between s1 and s2
+    """
+    if len(s1) < len(s2):
+        return levenshtein_distance(s2, s1)
+    
+    # len(s1) >= len(s2)
+    if len(s2) == 0:
+        return len(s1)
+    
+    previous_row = range(len(s2) + 1)
+    for i, c1 in enumerate(s1):
+        current_row = [i + 1]
+        for j, c2 in enumerate(s2):
+            # j+1 instead of j since previous_row and current_row are one character longer
+            insertions = previous_row[j + 1] + 1
+            deletions = current_row[j] + 1
+            substitutions = previous_row[j] + (c1 != c2)
+            current_row.append(min(insertions, deletions, substitutions))
+        previous_row = current_row
+    
+    return previous_row[-1]
 
 
 def normalize_japanese_text(text: str) -> str:

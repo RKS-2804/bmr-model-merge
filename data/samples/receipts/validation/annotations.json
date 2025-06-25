@@ -1,0 +1,147 @@
+{
+  "receipt_1": {
+    "receipt_number": "0001",
+    "date": "2025-06-25",
+    "amount": "¥1,250",
+    "items": [
+      {
+        "name": "商品 A",
+        "price": "¥500"
+      },
+      {
+        "name": "商品 B",
+        "price": "¥750"
+      }
+    ],
+    "fields": {
+      "receipt_number": {
+        "value": "0001",
+        "confidence": 0.93
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.91
+      },
+      "total_amount": {
+        "value": "¥1,250",
+        "confidence": 0.97
+      }
+    }
+  },
+  "receipt_2": {
+    "receipt_number": "0002",
+    "date": "2025-06-25",
+    "amount": "¥1,250",
+    "items": [
+      {
+        "name": "商品 A",
+        "price": "¥500"
+      },
+      {
+        "name": "商品 B",
+        "price": "¥750"
+      }
+    ],
+    "fields": {
+      "receipt_number": {
+        "value": "0002",
+        "confidence": 0.93
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.91
+      },
+      "total_amount": {
+        "value": "¥1,250",
+        "confidence": 0.97
+      }
+    }
+  },
+  "receipt_3": {
+    "receipt_number": "0003",
+    "date": "2025-06-25",
+    "amount": "¥1,250",
+    "items": [
+      {
+        "name": "商品 A",
+        "price": "¥500"
+      },
+      {
+        "name": "商品 B",
+        "price": "¥750"
+      }
+    ],
+    "fields": {
+      "receipt_number": {
+        "value": "0003",
+        "confidence": 0.93
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.91
+      },
+      "total_amount": {
+        "value": "¥1,250",
+        "confidence": 0.97
+      }
+    }
+  },
+  "receipt_4": {
+    "receipt_number": "0004",
+    "date": "2025-06-25",
+    "amount": "¥1,250",
+    "items": [
+      {
+        "name": "商品 A",
+        "price": "¥500"
+      },
+      {
+        "name": "商品 B",
+        "price": "¥750"
+      }
+    ],
+    "fields": {
+      "receipt_number": {
+        "value": "0004",
+        "confidence": 0.93
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.91
+      },
+      "total_amount": {
+        "value": "¥1,250",
+        "confidence": 0.97
+      }
+    }
+  },
+  "receipt_5": {
+    "receipt_number": "0005",
+    "date": "2025-06-25",
+    "amount": "¥1,250",
+    "items": [
+      {
+        "name": "商品 A",
+        "price": "¥500"
+      },
+      {
+        "name": "商品 B",
+        "price": "¥750"
+      }
+    ],
+    "fields": {
+      "receipt_number": {
+        "value": "0005",
+        "confidence": 0.93
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.91
+      },
+      "total_amount": {
+        "value": "¥1,250",
+        "confidence": 0.97
+      }
+    }
+  }
+}

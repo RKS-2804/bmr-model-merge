@@ -1,0 +1,98 @@
+# Sample data configuration for Japanese invoice/receipt OCR
+
+# Dataset paths
+datasets:
+  receipts:
+    train:
+      path: "data/jp_receipts/train"
+      max_samples: null  # Use all available samples
+    val:
+      path: "data/jp_receipts/val"
+      max_samples: 100   # Limit validation samples for faster evaluation
+    test:
+      path: "data/jp_receipts/test"
+      max_samples: null
+    encoding: "utf-8"    # Japanese text encoding
+
+  invoices:
+    train:
+      path: "data/jp_invoices/train"
+      max_samples: null
+    val:
+      path: "data/jp_invoices/val"
+      max_samples: 100
+    test:
+      path: "data/jp_invoices/test"
+      max_samples: null
+    encoding: "utf-8"
+    include_line_items: true
+
+# Text processing configurations
+text_processing:
+  japanese:
+    use_mecab: true      # Use MeCab for Japanese tokenization
+  
+  # Text normalization options
+  normalization:
+    remove_spaces: false
+    normalize_characters: true
+    normalize_numbers: true
+    normalize_punctuation: true
+
+# Image processing configurations
+image_processing:
+  receipts:
+    resize_width: 1280   # Resize images to this width (preserving aspect ratio)
+    binarization: true   # Apply binarization for cleaner text
+    denoise: true        # Apply noise reduction
+    contrast_enhancement: true
+    deskew: true         # Correct skewed images
+
+  invoices:
+    resize_width: 1600   # Invoices may benefit from higher resolution
+    binarization: false  # Some invoices have colored elements that should be preserved
+    denoise: true
+    contrast_enhancement: true
+    deskew: true
+    detect_orientation: true  # Detect and correct vertical text orientation
+
+# Data augmentation configurations for training
+augmentation:
+  enabled: true
+  probability: 0.5       # Probability of applying augmentations to a sample
+  
+  # Geometric augmentations
+  rotation: true
+  rotation_max_angle: 3  # Max rotation angle in degrees
+  perspective: true
+  perspective_distortion: 0.03
+  
+  # Appearance augmentations
+  brightness: true
+  brightness_range: [0.85, 1.15]
+  contrast: true
+  contrast_range: [0.85, 1.15]
+  noise: true
+  noise_intensity: 0.01
+  blur: true
+  blur_radius: 0.7
+
+# Sample datasets (for quick testing)
+sample_datasets:
+  # Sample receipt dataset with minimal images
+  mini_receipts:
+    path: "data/samples/receipts"
+    format: "images_with_annotations"
+    size: 10  # 10 sample images with annotations
+  
+  # Sample invoice dataset
+  mini_invoices:
+    path: "data/samples/invoices" 
+    format: "images_with_annotations"
+    size: 10
+    
+  # Sample dataset for demo
+  demo_samples:
+    path: "data/samples/demo"
+    format: "images_only"
+    size: 5  # 5 sample images for demo/testing purposes

@@ -1,0 +1,23 @@
+model:
+  target: evomerge.JapaneseOCRModel
+  params:
+    model_path: trl-lib/got-ocr2.0
+    template: ja-shisa-vqa
+    model_kwargs:
+      torch_dtype: torch.float16
+    generation_config:
+      max_new_tokens: 512
+      do_sample: false
+      num_beams: 5
+      repetition_penalty: 1.5
+eval:
+    - target: evomerge.eval.JaVGVQA
+      params:
+        loader_kwargs:
+          batch_size: 4
+          num_workers: 2
+    - target: evomerge.eval.JaVLMBenchIntheWild
+      params:
+        loader_kwargs:
+          batch_size: 4
+          num_workers: 2

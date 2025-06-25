@@ -1,0 +1,73 @@
+# Default configuration for evolutionary model merging
+
+# Evolution parameters
+evolution:
+  population_size: 20
+  generations: 50
+  mutation_rate: 0.2
+  crossover_rate: 0.7
+  elitism_count: 2
+  tournament_size: 3
+  
+  # Fitness weights for multi-objective optimization
+  # Higher values indicate more importance
+  fitness_weights:
+    character_accuracy: 0.6
+    field_extraction_accuracy: 0.3
+    processing_speed: 0.1
+  
+  # Checkpoint configuration
+  checkpoint:
+    enabled: true
+    interval: 5  # Save checkpoint every 5 generations
+    save_top_k: 3  # Save top 3 individuals in each checkpoint
+    path: "checkpoints"
+    save_population: true
+
+# Base models to use as initial population
+base_models:
+  - type: "vlm"
+    name: "vila-jp"
+    weight_range: [0.5, 1.0]
+  - type: "vlm"
+    name: "got-ocr2-0"
+    weight_range: [0.1, 0.5]
+  - type: "llm"
+    name: "shisa-gamma-7b-v1"
+    weight_range: [0.1, 0.3]
+  - type: "llm"
+    name: "elyza-japanese-ocr-7b"
+    weight_range: [0.3, 0.7]
+
+# Evaluation settings
+evaluation:
+  batch_size: 4
+  metrics:
+    - "character_accuracy"
+    - "field_extraction_accuracy"
+    - "processing_speed"
+  datasets:
+    - path: "data/samples/receipts"
+      weight: 0.5
+    - path: "data/samples/invoices"
+      weight: 0.5
+
+# Model configuration
+model:
+  target: "evomerge.models.japanese_ocr.JapaneseOCRModel"
+  params:
+    device: "cuda"
+    confidence_threshold: 0.7
+
+# Field extractor configuration
+field_extractor:
+  target: "evomerge.models.field_extractor.InvoiceFieldExtractor"
+  params:
+    model_name: "cl-tohoku/bert-base-japanese-v2"
+    device: "cuda"
+    confidence_threshold: 0.7
+
+# Visualization settings
+visualization:
+  enabled: true
+  plot_metrics: ["character_accuracy", "field_extraction_accuracy", "processing_speed"]

@@ -1,0 +1,122 @@
+# Configuration file for BMR and BWR optimization algorithms
+# This file contains settings for both algorithms and can be used as a template
+
+# General optimization settings
+optimization:
+  max_generations: 30
+  population_size: 40
+  checkpoint_frequency: 5
+  early_stopping:
+    patience: 5
+    min_delta: 0.001
+  seed: 42
+  parallel_evaluations: true
+  num_workers: 4
+
+# BMR specific settings
+bmr:
+  enabled: true
+  T_parameter: 1.0  # Multiplier for the mean in the BMR formula
+  exploitation_ratio: 0.5  # Probability of exploitation vs exploration
+  elitism: 2  # Number of best individuals to preserve unchanged
+  initialization:
+    method: "uniform"  # uniform, normal, or from_pretrained
+    bounds_multiplier: 0.2  # For extending bounds beyond min/max of base models
+
+# BWR specific settings
+bwr:
+  enabled: true
+  T_parameter: 1.0  # Multiplier for the random solution in the BWR formula
+  exploitation_ratio: 0.5  # Probability of exploitation vs exploration
+  elitism: 2  # Number of best individuals to preserve unchanged
+  initialization:
+    method: "uniform"
+    bounds_multiplier: 0.2
+
+# Base models to merge
+models:
+  base_models:
+    - name: "vila-jp"
+      weight: 1.0
+      path: "models/vila-jp"
+      config: "configs/vlm/vila-jp.yaml"
+    - name: "deepseek-vl2-small"
+      weight: 1.0
+      path: "models/deepseek-vl2-small"
+      config: "configs/vlm/deepseek-vl2-small.yaml" 
+    - name: "qwen2-5-vl-7b"
+      weight: 0.8
+      path: "models/qwen2-5-vl-7b"
+      config: "configs/vlm/qwen2-5-vl-7b.yaml"
+    - name: "internvl2-5-8b"
+      weight: 0.7
+      path: "models/internvl2-5-8b"
+      config: "configs/vlm/internvl2-5-8b.yaml"
+    - name: "got-ocr2-0"
+      weight: 1.2
+      path: "models/got-ocr2-0"
+      config: "configs/vlm/got-ocr2-0.yaml"
+
+# Evaluation settings
+evaluation:
+  metrics:
+    - name: "character_accuracy"
+      weight: 0.3
+    - name: "field_extraction_f1"
+      weight: 0.4
+    - name: "layout_recognition_accuracy" 
+      weight: 0.3
+  datasets:
+    - name: "japanese_invoices"
+      path: "data/japanese_invoices"
+      split: "validation"
+      weight: 0.6
+    - name: "japanese_receipts"
+      path: "data/japanese_receipts"
+      split: "validation"
+      weight: 0.4
+  batch_size: 8
+  max_samples: 100  # Limit samples for faster evaluation during optimization
+
+# Output settings
+output:
+  save_dir: "results/optimization"
+  save_best_model: true
+  save_population: false
+  save_history: true
+  verbose: true
+  log_level: "info"
+  plots:
+    - "convergence"
+    - "population_diversity"
+    - "fitness_distribution"
+
+# Japanese language specific settings
+japanese_ocr:
+  text_normalization:
+    convert_fullwidth_to_halfwidth: true
+    normalize_characters: true
+    remove_whitespace: true
+  field_extraction:
+    confidence_threshold: 0.7
+    use_layout_analysis: true
+    use_templates: true
+  template_matching:
+    threshold: 0.8
+    max_templates: 5
+
+# Comparison settings
+comparison:
+  algorithms:
+    - "genetic"
+    - "bmr"
+    - "bwr"
+  metrics:
+    - "convergence_speed"
+    - "final_accuracy"
+    - "generalization"
+  statistical_tests:
+    - "wilcoxon"
+    - "friedman"
+  num_runs: 5
+  report_format: "html"

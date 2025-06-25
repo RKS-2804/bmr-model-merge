@@ -1,0 +1,97 @@
+{
+  "invoice_1": {
+    "invoice_number": "INV-2025-0001",
+    "date": "2025-06-25",
+    "amount": "¥10,000",
+    "fields": {
+      "invoice_number": {
+        "value": "INV-2025-0001",
+        "confidence": 0.95
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.92
+      },
+      "amount": {
+        "value": "¥10,000",
+        "confidence": 0.98
+      }
+    }
+  },
+  "invoice_2": {
+    "invoice_number": "INV-2025-0002",
+    "date": "2025-06-25",
+    "amount": "¥10,000",
+    "fields": {
+      "invoice_number": {
+        "value": "INV-2025-0002",
+        "confidence": 0.95
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.92
+      },
+      "amount": {
+        "value": "¥10,000",
+        "confidence": 0.98
+      }
+    }
+  },
+  "invoice_3": {
+    "invoice_number": "INV-2025-0003",
+    "date": "2025-06-25",
+    "amount": "¥10,000",
+    "fields": {
+      "invoice_number": {
+        "value": "INV-2025-0003",
+        "confidence": 0.95
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.92
+      },
+      "amount": {
+        "value": "¥10,000",
+        "confidence": 0.98
+      }
+    }
+  },
+  "invoice_4": {
+    "invoice_number": "INV-2025-0004",
+    "date": "2025-06-25",
+    "amount": "¥10,000",
+    "fields": {
+      "invoice_number": {
+        "value": "INV-2025-0004",
+        "confidence": 0.95
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.92
+      },
+      "amount": {
+        "value": "¥10,000",
+        "confidence": 0.98
+      }
+    }
+  },
+  "invoice_5": {
+    "invoice_number": "INV-2025-0005",
+    "date": "2025-06-25",
+    "amount": "¥10,000",
+    "fields": {
+      "invoice_number": {
+        "value": "INV-2025-0005",
+        "confidence": 0.95
+      },
+      "date": {
+        "value": "2025-06-25",
+        "confidence": 0.92
+      },
+      "amount": {
+        "value": "¥10,000",
+        "confidence": 0.98
+      }
+    }
+  }
+}

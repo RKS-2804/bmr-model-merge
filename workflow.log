@@ -1,0 +1,124 @@
+2025-06-25 14:35:23,712 - bmr-workflow - INFO - Loading configuration from configs/evolution/default.yaml
+2025-06-25 14:35:23,741 - bmr-workflow - INFO - Setting up resources
+2025-06-25 14:35:23,741 - bmr-workflow - INFO - Downloading models
+2025-06-25 14:35:23,742 - bmr-workflow - INFO - Preparing datasets
+2025-06-25 14:35:23,742 - bmr-workflow - INFO - Preparing dataset None (split: validation)
+2025-06-25 14:35:23,742 - bmr-workflow - ERROR - Workflow failed: 'NoneType' object has no attribute 'lower'
+2025-06-25 14:35:23,746 - bmr-workflow - ERROR - Traceback (most recent call last):
+  File "C:\Users\RavikumarShah\Internship\bmr\bmr-model-merge\run_complete_workflow.py", line 678, in main
+    manager.setup_resources(args.force_download, args.models)
+  File "C:\Users\RavikumarShah\Internship\bmr\bmr-model-merge\run_complete_workflow.py", line 119, in setup_resources
+    self._prepare_datasets()
+  File "C:\Users\RavikumarShah\Internship\bmr\bmr-model-merge\run_complete_workflow.py", line 187, in _prepare_datasets
+    if "invoice" in name.lower():
+                    ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+
+2025-06-25 14:41:36,205 - bmr-workflow - INFO - Loading configuration from configs/evolution/default.yaml
+2025-06-25 14:41:36,215 - bmr-workflow - INFO - Setting up resources
+2025-06-25 14:41:36,215 - bmr-workflow - INFO - Downloading models
+2025-06-25 14:41:36,215 - bmr-workflow - INFO - Preparing datasets
+2025-06-25 14:41:36,216 - bmr-workflow - INFO - Preparing dataset receipts (split: validation)
+2025-06-25 14:41:36,374 - bmr-workflow - INFO - Dataset receipts prepared with 5 samples
+2025-06-25 14:41:36,375 - bmr-workflow - INFO - Preparing dataset invoices (split: validation)
+2025-06-25 14:41:36,419 - bmr-workflow - INFO - Dataset invoices prepared with 5 samples
+2025-06-25 14:41:36,419 - bmr-workflow - INFO - Resource setup complete
+2025-06-25 14:41:36,419 - bmr-workflow - INFO - Running optimization algorithms
+2025-06-25 14:41:36,419 - bmr-workflow - INFO - Running bmr optimization
+2025-06-25 14:41:51,397 - bmr-workflow - INFO - Generation 1/30: Best fitness = 0.7611
+2025-06-25 14:41:51,411 - bmr-workflow - INFO - Generation 5/30: Best fitness = 1.0486
+2025-06-25 14:41:51,431 - bmr-workflow - INFO - Generation 10/30: Best fitness = 1.0494
+2025-06-25 14:41:51,449 - bmr-workflow - INFO - Generation 15/30: Best fitness = 1.0498
+2025-06-25 14:41:51,464 - bmr-workflow - INFO - Generation 20/30: Best fitness = 1.0499
+2025-06-25 14:41:51,482 - bmr-workflow - INFO - Generation 25/30: Best fitness = 1.0499
+2025-06-25 14:41:51,500 - bmr-workflow - INFO - Generation 30/30: Best fitness = 1.0499
+2025-06-25 14:41:51,504 - bmr-workflow - INFO - Saved checkpoint for bmr to results\checkpoints\bmr_best.npy
+2025-06-25 14:41:51,504 - bmr-workflow - INFO - bmr optimization completed in 0.11 seconds
+2025-06-25 14:41:51,504 - bmr-workflow - INFO - Best fitness: 1.0499
+2025-06-25 14:41:51,504 - bmr-workflow - INFO - Running bwr optimization
+2025-06-25 14:41:51,511 - bmr-workflow - INFO - Generation 1/30: Best fitness = 0.7577
+2025-06-25 14:41:51,524 - bmr-workflow - INFO - Generation 5/30: Best fitness = 1.0488
+2025-06-25 14:41:51,547 - bmr-workflow - INFO - Generation 10/30: Best fitness = 1.0493
+2025-06-25 14:41:51,568 - bmr-workflow - INFO - Generation 15/30: Best fitness = 1.0495
+2025-06-25 14:41:51,585 - bmr-workflow - INFO - Generation 20/30: Best fitness = 1.0495
+2025-06-25 14:41:51,600 - bmr-workflow - INFO - Generation 25/30: Best fitness = 1.0495
+2025-06-25 14:41:51,617 - bmr-workflow - INFO - Generation 30/30: Best fitness = 1.0495
+2025-06-25 14:41:51,621 - bmr-workflow - INFO - Saved checkpoint for bwr to results\checkpoints\bwr_best.npy
+2025-06-25 14:41:51,621 - bmr-workflow - INFO - bwr optimization completed in 0.11 seconds
+2025-06-25 14:41:51,621 - bmr-workflow - INFO - Best fitness: 1.0495
+2025-06-25 14:41:51,621 - bmr-workflow - INFO - Running genetic optimization
+2025-06-25 14:41:51,629 - bmr-workflow - INFO - Generation 1/30: Best fitness = 0.7682
+2025-06-25 14:41:51,650 - bmr-workflow - INFO - Generation 5/30: Best fitness = 0.7901
+2025-06-25 14:41:51,675 - bmr-workflow - INFO - Generation 10/30: Best fitness = 0.8371
+2025-06-25 14:41:51,708 - bmr-workflow - INFO - Generation 15/30: Best fitness = 0.8409
+2025-06-25 14:41:51,736 - bmr-workflow - INFO - Generation 20/30: Best fitness = 0.8499
+2025-06-25 14:41:51,759 - bmr-workflow - INFO - Generation 25/30: Best fitness = 0.8634
+2025-06-25 14:41:51,780 - bmr-workflow - INFO - Generation 30/30: Best fitness = 0.8646
+2025-06-25 14:41:51,784 - bmr-workflow - INFO - Saved checkpoint for genetic to results\checkpoints\genetic_best.npy
+2025-06-25 14:41:51,784 - bmr-workflow - INFO - genetic optimization completed in 0.16 seconds
+2025-06-25 14:41:51,785 - bmr-workflow - INFO - Best fitness: 0.8646
+2025-06-25 14:41:51,785 - bmr-workflow - INFO - Comparing optimization results
+2025-06-25 14:41:54,133 - bmr-workflow - INFO - Comparison plots saved to results\plots
+2025-06-25 14:41:54,134 - bmr-workflow - INFO - Best algorithm: bmr with fitness 1.0499
+2025-06-25 14:41:54,134 - bmr-workflow - INFO - Comparison results saved to results\results\algorithm_comparison.json
+2025-06-25 14:41:54,134 - bmr-workflow - INFO - Preparing demo environment
+2025-06-25 14:41:54,138 - bmr-workflow - INFO - Demo prepared with bmr model
+2025-06-25 14:41:54,140 - bmr-workflow - INFO - Demo model saved to demo_model\best_model.npy
+2025-06-25 14:41:54,140 - bmr-workflow - INFO - Demo config saved to configs\demo_config.yaml
+2025-06-25 14:41:54,140 - bmr-workflow - INFO - Generating final report
+2025-06-25 14:41:54,146 - bmr-workflow - INFO - Final report saved to results\results\workflow_report.json and results\results\workflow_report.md
+2025-06-25 14:41:54,146 - bmr-workflow - INFO - Workflow completed successfully
+2025-06-25 14:50:18,173 - bmr-workflow - INFO - Loading configuration from configs/evolution/default.yaml
+2025-06-25 14:50:18,182 - bmr-workflow - INFO - Setting up resources
+2025-06-25 14:50:18,182 - bmr-workflow - INFO - Downloading models
+2025-06-25 14:50:18,185 - bmr-workflow - INFO - Preparing datasets
+2025-06-25 14:50:18,185 - bmr-workflow - INFO - Preparing dataset receipts (split: validation)
+2025-06-25 14:50:18,187 - bmr-workflow - INFO - Dataset receipts prepared with 5 samples
+2025-06-25 14:50:18,187 - bmr-workflow - INFO - Preparing dataset invoices (split: validation)
+2025-06-25 14:50:18,188 - bmr-workflow - INFO - Dataset invoices prepared with 5 samples
+2025-06-25 14:50:18,189 - bmr-workflow - INFO - Resource setup complete
+2025-06-25 14:50:18,189 - bmr-workflow - INFO - Running optimization algorithms
+2025-06-25 14:50:18,189 - bmr-workflow - INFO - Running bmr optimization
+2025-06-25 14:50:18,715 - bmr-workflow - INFO - Generation 1/30: Best fitness = 0.7550
+2025-06-25 14:50:18,727 - bmr-workflow - INFO - Generation 5/30: Best fitness = 1.0492
+2025-06-25 14:50:18,741 - bmr-workflow - INFO - Generation 10/30: Best fitness = 1.0492
+2025-06-25 14:50:18,756 - bmr-workflow - INFO - Generation 15/30: Best fitness = 1.0495
+2025-06-25 14:50:18,771 - bmr-workflow - INFO - Generation 20/30: Best fitness = 1.0495
+2025-06-25 14:50:18,789 - bmr-workflow - INFO - Generation 25/30: Best fitness = 1.0495
+2025-06-25 14:50:18,805 - bmr-workflow - INFO - Generation 30/30: Best fitness = 1.0495
+2025-06-25 14:50:18,808 - bmr-workflow - INFO - Saved checkpoint for bmr to results\checkpoints\bmr_best.npy
+2025-06-25 14:50:18,808 - bmr-workflow - INFO - bmr optimization completed in 0.09 seconds
+2025-06-25 14:50:18,808 - bmr-workflow - INFO - Best fitness: 1.0495
+2025-06-25 14:50:18,808 - bmr-workflow - INFO - Running bwr optimization
+2025-06-25 14:50:18,815 - bmr-workflow - INFO - Generation 1/30: Best fitness = 0.7677
+2025-06-25 14:50:18,828 - bmr-workflow - INFO - Generation 5/30: Best fitness = 1.0475
+2025-06-25 14:50:18,850 - bmr-workflow - INFO - Generation 10/30: Best fitness = 1.0495
+2025-06-25 14:50:18,865 - bmr-workflow - INFO - Generation 15/30: Best fitness = 1.0498
+2025-06-25 14:50:18,883 - bmr-workflow - INFO - Generation 20/30: Best fitness = 1.0498
+2025-06-25 14:50:18,900 - bmr-workflow - INFO - Generation 25/30: Best fitness = 1.0500
+2025-06-25 14:50:18,918 - bmr-workflow - INFO - Generation 30/30: Best fitness = 1.0500
+2025-06-25 14:50:18,921 - bmr-workflow - INFO - Saved checkpoint for bwr to results\checkpoints\bwr_best.npy
+2025-06-25 14:50:18,921 - bmr-workflow - INFO - bwr optimization completed in 0.11 seconds
+2025-06-25 14:50:18,922 - bmr-workflow - INFO - Best fitness: 1.0500
+2025-06-25 14:50:18,922 - bmr-workflow - INFO - Running genetic optimization
+2025-06-25 14:50:18,932 - bmr-workflow - INFO - Generation 1/30: Best fitness = 0.7489
+2025-06-25 14:50:18,952 - bmr-workflow - INFO - Generation 5/30: Best fitness = 0.7909
+2025-06-25 14:50:18,978 - bmr-workflow - INFO - Generation 10/30: Best fitness = 0.8072
+2025-06-25 14:50:19,000 - bmr-workflow - INFO - Generation 15/30: Best fitness = 0.8280
+2025-06-25 14:50:19,020 - bmr-workflow - INFO - Generation 20/30: Best fitness = 0.8533
+2025-06-25 14:50:19,043 - bmr-workflow - INFO - Generation 25/30: Best fitness = 0.8638
+2025-06-25 14:50:19,063 - bmr-workflow - INFO - Generation 30/30: Best fitness = 0.8776
+2025-06-25 14:50:19,067 - bmr-workflow - INFO - Saved checkpoint for genetic to results\checkpoints\genetic_best.npy
+2025-06-25 14:50:19,067 - bmr-workflow - INFO - genetic optimization completed in 0.14 seconds
+2025-06-25 14:50:19,067 - bmr-workflow - INFO - Best fitness: 0.8776
+2025-06-25 14:50:19,067 - bmr-workflow - INFO - Comparing optimization results
+2025-06-25 14:50:19,973 - bmr-workflow - INFO - Comparison plots saved to results\plots
+2025-06-25 14:50:19,973 - bmr-workflow - INFO - Best algorithm: bwr with fitness 1.0500
+2025-06-25 14:50:19,974 - bmr-workflow - INFO - Comparison results saved to results\results\algorithm_comparison.json
+2025-06-25 14:50:19,974 - bmr-workflow - INFO - Preparing demo environment
+2025-06-25 14:50:19,978 - bmr-workflow - INFO - Demo prepared with bwr model
+2025-06-25 14:50:19,979 - bmr-workflow - INFO - Demo model saved to demo_model\best_model.npy
+2025-06-25 14:50:19,979 - bmr-workflow - INFO - Demo config saved to configs\demo_config.yaml
+2025-06-25 14:50:19,979 - bmr-workflow - INFO - Generating final report
+2025-06-25 14:50:19,981 - bmr-workflow - INFO - Final report saved to results\results\workflow_report.json and results\results\workflow_report.md
+2025-06-25 14:50:19,982 - bmr-workflow - INFO - Workflow completed successfully

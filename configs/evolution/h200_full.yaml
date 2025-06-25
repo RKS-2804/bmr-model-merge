@@ -1,0 +1,133 @@
+# Full-scale configuration for H200 GPU implementation
+# This configuration uses full models and optimizes for high-end hardware
+
+# General optimization settings
+optimization:
+  max_generations: 100
+  population_size: 40
+  checkpoint_frequency: 5
+  early_stopping:
+    patience: 10
+    min_delta: 0.0005
+  seed: 42
+  parallel_evaluations: true
+  num_workers: 8  # Adjust based on H200 core count
+
+# BMR settings - only essential parameters
+bmr:
+  enabled: true
+  population_size: 40
+  max_generations: 100
+
+# BWR settings - only essential parameters
+bwr:
+  enabled: true
+  population_size: 40
+  max_generations: 100
+
+# Generic evolution parameters (for genetic algorithm)
+evolution:
+  population_size: 40
+  generations: 100
+  mutation_rate: 0.2
+  crossover_rate: 0.7
+  elitism_count: 4
+  tournament_size: 5
+  
+  # Fitness weights for multi-objective optimization
+  fitness_weights:
+    character_accuracy: 0.6
+    field_extraction_accuracy: 0.3
+    processing_speed: 0.1
+  
+  # Checkpoint configuration
+  checkpoint:
+    enabled: true
+    interval: 5
+    save_top_k: 5
+    path: "checkpoints"
+    save_population: true
+
+# Full model configuration with large models
+base_models:
+  - type: "vlm"
+    name: "stockmark-2-vl-100b-beta"
+    weight_range: [0.4, 0.8]
+  - type: "vlm"
+    name: "vila-jp"
+    weight_range: [0.3, 0.7]
+  - type: "vlm" 
+    name: "deepseek-vl2-small"
+    weight_range: [0.2, 0.6]
+  - type: "vlm"
+    name: "qwen2-5-vl-7b"
+    weight_range: [0.1, 0.5]
+  - type: "vlm"
+    name: "got-ocr2-0"
+    weight_range: [0.2, 0.5]
+  - type: "vlm"
+    name: "internvl2-5-8b"
+    weight_range: [0.1, 0.4]
+  - type: "llm"
+    name: "shisa-gamma-7b-v1"
+    weight_range: [0.1, 0.3]
+  - type: "llm"
+    name: "elyza-japanese-ocr-7b"
+    weight_range: [0.3, 0.6]
+  - type: "llm"
+    name: "japanese-stablelm-7b"
+    weight_range: [0.2, 0.5]
+  - type: "llm"
+    name: "llm-jp-invoice-13b"
+    weight_range: [0.4, 0.7]
+
+# Evaluation settings
+evaluation:
+  # Optimize batch sizes for H200 GPU
+  batch_size: 16
+  metrics:
+    - "character_accuracy"
+    - "field_extraction_accuracy"
+    - "processing_speed"
+  # Specify actual full dataset paths - these should point to your real data
+  datasets:
+    - name: "invoices-full"
+      path: "data/jp_invoices"
+      split: "validation"
+      weight: 0.6
+    - name: "receipts-full"
+      path: "data/jp_receipts"
+      split: "validation"
+      weight: 0.4
+
+# Model configuration for H200 GPU
+model:
+  target: "evomerge.models.japanese_ocr.JapaneseOCRModel"
+  params:
+    device: "cuda"
+    # H200 can handle fp16 for most models
+    torch_dtype: "float16"
+    confidence_threshold: 0.7
+    # Utilize tensor parallelism for large models
+    use_tensor_parallel: true
+    tp_size: 2
+    # Enable flash attention for faster processing
+    use_flash_attention: true
+
+# Field extractor configuration
+field_extractor:
+  target: "evomerge.models.field_extractor.InvoiceFieldExtractor"
+  params:
+    model_name: "cl-tohoku/bert-base-japanese-v2"
+    device: "cuda"
+    confidence_threshold: 0.7
+    # Optimize for H200 GPU
+    batch_size: 32
+    use_fp16: true
+
+# Visualization settings
+visualization:
+  enabled: true
+  plot_metrics: ["character_accuracy", "field_extraction_accuracy", "processing_speed"]
+  interactive: true
+  save_format: "html"

@@ -1,0 +1,5 @@
+correct_orientation: true
+model:
+  path: demo_model\best_model.npy
+  type: japanese_ocr
+normalize_characters: true

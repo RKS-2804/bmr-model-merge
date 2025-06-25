@@ -1,0 +1,124 @@
+{
+  "timestamp": "2025-06-25 14:50:19",
+  "config": {
+    "evolution": {
+      "population_size": 20,
+      "generations": 50,
+      "mutation_rate": 0.2,
+      "crossover_rate": 0.7,
+      "elitism_count": 2,
+      "tournament_size": 3,
+      "fitness_weights": {
+        "character_accuracy": 0.6,
+        "field_extraction_accuracy": 0.3,
+        "processing_speed": 0.1
+      },
+      "checkpoint": {
+        "enabled": true,
+        "interval": 5,
+        "save_top_k": 3,
+        "path": "checkpoints",
+        "save_population": true
+      }
+    },
+    "base_models": [
+      {
+        "type": "vlm",
+        "name": "vila-jp",
+        "weight_range": [
+          0.5,
+          1.0
+        ]
+      },
+      {
+        "type": "vlm",
+        "name": "got-ocr2-0",
+        "weight_range": [
+          0.1,
+          0.5
+        ]
+      },
+      {
+        "type": "llm",
+        "name": "shisa-gamma-7b-v1",
+        "weight_range": [
+          0.1,
+          0.3
+        ]
+      },
+      {
+        "type": "llm",
+        "name": "elyza-japanese-ocr-7b",
+        "weight_range": [
+          0.3,
+          0.7
+        ]
+      }
+    ],
+    "evaluation": {
+      "batch_size": 4,
+      "metrics": [
+        "character_accuracy",
+        "field_extraction_accuracy",
+        "processing_speed"
+      ],
+      "datasets": [
+        {
+          "path": "data/samples/receipts",
+          "weight": 0.5
+        },
+        {
+          "path": "data/samples/invoices",
+          "weight": 0.5
+        }
+      ]
+    },
+    "model": {
+      "target": "evomerge.models.japanese_ocr.JapaneseOCRModel",
+      "params": {
+        "device": "cuda",
+        "confidence_threshold": 0.7
+      }
+    },
+    "field_extractor": {
+      "target": "evomerge.models.field_extractor.InvoiceFieldExtractor",
+      "params": {
+        "model_name": "cl-tohoku/bert-base-japanese-v2",
+        "device": "cuda",
+        "confidence_threshold": 0.7
+      }
+    },
+    "visualization": {
+      "enabled": true,
+      "plot_metrics": [
+        "character_accuracy",
+        "field_extraction_accuracy",
+        "processing_speed"
+      ]
+    }
+  },
+  "datasets": {
+    "receipts": 5,
+    "invoices": 5
+  },
+  "results": {
+    "bmr": {
+      "best_fitness": 1.0494625043423287,
+      "runtime": 0.09302949905395508
+    },
+    "bwr": {
+      "best_fitness": 1.0499787802868707,
+      "runtime": 0.10622239112854004
+    },
+    "genetic": {
+      "best_fitness": 0.8776497241655273,
+      "runtime": 0.14043545722961426
+    }
+  },
+  "plots": [
+    "results\\plots\\convergence_comparison.png",
+    "results\\plots\\diversity_comparison.png",
+    "results\\plots\\fitness_comparison.png"
+  ],
+  "best_algorithm": "bwr"
+}
